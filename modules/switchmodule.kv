@@ -1,0 +1,59 @@
+<SwitchesBox>:
+    orientation: 'vertical'
+    GridLayout:
+        size_hint: (1, 1)
+        id: container
+        cols: 2
+        padding: [dp(40), dp(10)]
+        # col_force_default: True
+        # col_default_width: dp(400)
+
+<SwitchBox>:
+    size_hint: (1, 1)
+    orientation: 'vertical'
+    on_release: self.action()
+    RelativeLayout:
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            BoxLayout:
+                id: bg
+                canvas.before:
+                    Color:
+                        rgba: utils.get_color_from_hex('#2A2A2ACC')
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [dp(10),]
+                size_hint: (.9, .9)
+
+        Label:
+            canvas.before:
+                Color:
+                    rgba: utils.get_color_from_hex('#3A3A3A')
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10, 10, 0, 0]
+            size_hint: (.9, None)
+            height: dp(25)
+            pos: (root.ids.bg.pos[0],root.ids.bg.pos[1]+root.ids.bg.height-self.height)
+            color: utils.get_color_from_hex('#868681')
+            text: root.name
+        Label:
+            color: utils.get_color_from_hex('#868681')
+            font_size: sp(12)
+
+            text: 'Last Updated {}'.format(root.updated_at)
+        BoxLayout:
+            size_hint: (None,None)
+            width: dp(70)
+            height: dp(55)
+            pos: (root.ids.bg.pos[0]+root.ids.bg.width-self.width, 10)
+            # RelativeLayout:
+            Label:
+                text: root.icon
+                font_name: 'assets/fonts/materialdesignicons-webfont.ttf'
+                font_size: sp(60)
+                color: root.color
+                halign: 'right'
