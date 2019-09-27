@@ -6,4 +6,5 @@ Kivy in memory sqllite DB
 
 [] Variables names
 [] Redo the entire backend db Structure
+[] ? 
 [] ?
