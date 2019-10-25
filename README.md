@@ -1,1 +1,1 @@
-# Kivy in memory sqllite DB
+# Kivy data state project
